@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Waffle</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="email_hint">example@gmail.com</string>
+    <string name="password_hint">yourPassword</string>
+    <string name="login">LOGIN</string>
+    <string name="register_text">REGISTER</string>
+    <string name="or">OR</string>
+    <string name="register_button_text">REGISTER</string>
+    <string name="register_title">Create an account for your Waffle app!</string>
+    <string name="name_hint">your username</string>
+</resources>
