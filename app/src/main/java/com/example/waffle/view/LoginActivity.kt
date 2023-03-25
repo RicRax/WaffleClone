@@ -15,9 +15,14 @@ import com.example.waffle.model.UserDao
 import com.example.waffle.model.data.AppDatabase
 import com.example.waffle.presenter.LoginContract
 import com.example.waffle.presenter.LoginPresenter
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity(), LoginContract.View {
+    @Inject
     private lateinit var presenter: LoginContract.Presenter
+
     private lateinit var userDao: UserDao
 
     private lateinit var binding: ActivityLoginBinding
@@ -32,12 +37,10 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         navController = Navigation.findNavController(this, R.id.nav_graph)
 
         userDao = AppDatabase.getDatabase(this).userDao()
-        presenter = LoginPresenter(this, userDao)
 
         val emailEditText = binding.emailEditText
         val passwordEditText = binding.passwordEditText
         val loginButton = binding.loginButton
-        val errorTextView = binding.errorTextView
 
         presenter = LoginPresenter(this,userDao)
 

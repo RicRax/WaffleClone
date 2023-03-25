@@ -1,8 +1,9 @@
 package com.example.waffle.presenter
 
 import com.example.waffle.model.UserDao
+import javax.inject.Inject
 
-class LoginPresenter(private val view: LoginContract.View, private val userDao: UserDao) :
+class LoginPresenter @Inject constructor(private val view: LoginContract.View, private val userDao: UserDao) :
     LoginContract.Presenter {
     override fun login(email: String, password: String) {
         val user = userDao.getUser(email, password)
