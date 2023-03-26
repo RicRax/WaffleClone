@@ -10,6 +10,6 @@ class DbRepository
 ) {
 
     fun saveUser(user: User) = dao.insertUser(user)
-    fun getUser(user: User) = dao.getUser(user.email,user.password)
+    fun getUser(email : String, password: String) = dao.getUser(email,password)
 
 }

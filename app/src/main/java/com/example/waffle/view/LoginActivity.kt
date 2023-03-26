@@ -13,6 +13,7 @@ import com.example.waffle.R
 import com.example.waffle.databinding.ActivityLoginBinding
 import com.example.waffle.model.UserDao
 import com.example.waffle.model.data.AppDatabase
+import com.example.waffle.model.repository.DbRepository
 import com.example.waffle.presenter.LoginContract
 import com.example.waffle.presenter.LoginPresenter
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +29,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
  //   private lateinit var navController: NavController
 
     @Inject
-    lateinit var dao: UserDao
+    lateinit var dbRepository: DbRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +40,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         val passwordEditText = binding.passwordEditText
         val loginButton = binding.loginButton
 
-        presenter = LoginPresenter(this,dao)
+        presenter = LoginPresenter(this,dbRepository)
 
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()
