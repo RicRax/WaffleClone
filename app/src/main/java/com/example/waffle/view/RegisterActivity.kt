@@ -6,10 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.waffle.R
 import com.example.waffle.databinding.ActivityRegisterBinding
 import com.example.waffle.presenter.RegisterContract
+import com.example.waffle.presenter.RegisterPresenter
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class RegisterActivity : AppCompatActivity(), RegisterContract.View {
 
-    private lateinit var presenter: RegisterContract.Presenter
+    lateinit var presenter: RegisterContract.Presenter
+
     private lateinit var binding: ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,12 +22,12 @@ class RegisterActivity : AppCompatActivity(), RegisterContract.View {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_register)
 
-        presenter = RegisterPresenter(this)
-
         val usernameEditText = binding.registerNameEditText
         val emailEditText = binding.registerEmailEditText
         val passwordEditText = binding.registerPasswordEditText
         val registerButton = binding.registerButton
+
+        presenter = RegisterPresenter(this)
 
         registerButton.setOnClickListener {
             val username = usernameEditText.text.toString()

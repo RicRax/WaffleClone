@@ -5,6 +5,7 @@ import javax.inject.Inject
 
 class LoginPresenter @Inject constructor(private val view: LoginContract.View, private val userDao: UserDao) :
     LoginContract.Presenter {
+
     override fun login(email: String, password: String) {
         val user = userDao.getUser(email, password)
         if (user != null) {

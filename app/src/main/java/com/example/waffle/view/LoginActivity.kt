@@ -20,29 +20,26 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity(), LoginContract.View {
-    @Inject
-    private lateinit var presenter: LoginContract.Presenter
 
-    private lateinit var userDao: UserDao
+    lateinit var presenter: LoginPresenter
 
     private lateinit var binding: ActivityLoginBinding
 
-    private lateinit var navController: NavController
+ //   private lateinit var navController: NavController
+
+    @Inject
+    lateinit var dao: UserDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_login)
 
-        navController = Navigation.findNavController(this, R.id.nav_graph)
-
-        userDao = AppDatabase.getDatabase(this).userDao()
-
         val emailEditText = binding.emailEditText
         val passwordEditText = binding.passwordEditText
         val loginButton = binding.loginButton
 
-        presenter = LoginPresenter(this,userDao)
+        presenter = LoginPresenter(this,dao)
 
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()
@@ -61,9 +58,9 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun navigateToHomeScreen() {
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
-        finish()
+        //val intent = Intent(this, HomeActivity::class.java)
+        //startActivity(intent)
+        //finish()
     }
 
 }

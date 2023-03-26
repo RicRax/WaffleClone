@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.waffle.model.User
 import com.example.waffle.model.UserDao
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class], version = 1, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
