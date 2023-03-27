@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.waffle.R
 import com.example.waffle.databinding.ActivityRegisterBinding
+import com.example.waffle.model.repository.DbRepository
 import com.example.waffle.presenter.RegisterContract
 import com.example.waffle.presenter.RegisterPresenter
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,6 +18,9 @@ class RegisterActivity : AppCompatActivity(), RegisterContract.View {
 
     private lateinit var binding: ActivityRegisterBinding
 
+    @Inject
+    lateinit var dbRepository: DbRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -27,7 +31,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContract.View {
         val passwordEditText = binding.registerPasswordEditText
         val registerButton = binding.registerButton
 
-        presenter = RegisterPresenter(this)
+        presenter = RegisterPresenter(this,dbRepository)
 
         registerButton.setOnClickListener {
             val username = usernameEditText.text.toString()

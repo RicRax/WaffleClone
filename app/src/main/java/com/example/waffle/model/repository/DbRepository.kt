@@ -9,7 +9,7 @@ class DbRepository
     private val dao: UserDao,
 ) {
 
-    fun saveUser(user: User) = dao.insertUser(user)
+    fun saveUser(username: String, email : String, password: String ) = dao.insertUser(User(0,username, email, password))
     fun getUser(email : String, password: String) = dao.getUser(email,password)
 
 }

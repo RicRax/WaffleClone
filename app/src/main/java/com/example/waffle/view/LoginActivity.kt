@@ -2,6 +2,7 @@ package com.example.waffle.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
@@ -47,6 +48,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
             val password = passwordEditText.text.toString()
             presenter.login(email, password)
         }
+
     }
 
     override fun onDestroy() {
@@ -62,6 +64,19 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         //val intent = Intent(this, HomeActivity::class.java)
         //startActivity(intent)
         //finish()
+    }
+
+    private fun navigateToRegisterScreen() {
+        Toast.makeText(this,"not working" , Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    fun navigateToRegisterScreen(view: View) {
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }
