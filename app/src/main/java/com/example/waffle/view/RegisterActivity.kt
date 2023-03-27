@@ -1,6 +1,7 @@
 package com.example.waffle.view
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.waffle.R
@@ -24,7 +25,9 @@ class RegisterActivity : AppCompatActivity(), RegisterContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_register)
+        val view = binding.root
+        setContentView(view)
+
 
         val usernameEditText = binding.registerNameEditText
         val emailEditText = binding.registerEmailEditText
