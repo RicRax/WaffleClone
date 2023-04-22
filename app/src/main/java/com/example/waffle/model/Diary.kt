@@ -11,11 +11,11 @@ data class Diary(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 
-    @NonNull
     val users: List<User>,
 
-    @NonNull
-    val color: Color
+    val color: Color,
+
+    var name: String
 )
 
 
