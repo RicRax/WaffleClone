@@ -10,7 +10,7 @@ class LoginPresenter @Inject constructor(private val view: LoginContract.View, p
     override fun login(email: String, password: String) {
         val user = DbRepository.getUser(email, password)
         if (user != null) {
-            view.navigateToHomeScreen()
+            view.navigateToHomeScreen(user)
         } else {
             view.showError("Invalid email or password")
         }

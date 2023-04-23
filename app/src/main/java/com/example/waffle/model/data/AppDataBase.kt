@@ -4,12 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.waffle.model.User
-import com.example.waffle.model.UserDao
+import com.example.waffle.model.*
 
-@Database(entities = [User::class], version = 1, exportSchema = true)
+@Database(entities = [User::class, Diary::class, DiaryOwnership::class], version = 1, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun diaryDao(): DiaryDao
+    abstract fun ownershipDao(): OwnershipDao
 
     companion object {
         @Volatile

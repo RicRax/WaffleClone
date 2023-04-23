@@ -2,13 +2,16 @@ package com.example.waffle.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.waffle.model.DiaryDao
 import com.example.waffle.model.UserDao
 import com.example.waffle.model.data.AppDatabase
+import com.example.waffle.model.data.OwnershipDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import java.security.acl.Owner
 import javax.inject.Singleton
 
 @Module
@@ -26,5 +29,17 @@ object DatabaseModule {
     @Singleton
     fun provideUserDao(database: AppDatabase): UserDao {
         return database.userDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideDiaryDao(database: AppDatabase): DiaryDao {
+        return database.diaryDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideOwnershipDao(database: AppDatabase): OwnershipDao {
+        return database.ownershipDao()
     }
 }

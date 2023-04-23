@@ -11,9 +11,7 @@ data class Diary(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 
-    val users: List<User>,
-
-    val color: Color,
+    val color: String,
 
     val name: String
 )

@@ -1,15 +1,13 @@
 package com.example.waffle.view
 
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.waffle.R
 import com.example.waffle.databinding.ItemDiaryBinding
 import com.example.waffle.model.Diary
 
-class DiaryAdapter(val diaryList: List<Diary>, val listener: (Diary, Int) -> Unit) :
+class DiaryAdapter(val diaryList: List<Diary>) :
     RecyclerView.Adapter<DiaryAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder{

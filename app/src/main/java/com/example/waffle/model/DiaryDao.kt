@@ -10,7 +10,8 @@ interface DiaryDao {
     fun insertDiary(Diary: Diary)
 
     @Query("SELECT * FROM diaries WHERE id = :id")
-    fun getDiary(id : Int): User?
+    fun getDiary(id : Int): Diary?
+
 }
 
 

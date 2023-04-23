@@ -12,6 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.waffle.R
 import com.example.waffle.databinding.ActivityLoginBinding
+import com.example.waffle.model.User
 import com.example.waffle.model.UserDao
 import com.example.waffle.model.data.AppDatabase
 import com.example.waffle.model.repository.DbRepository
@@ -60,10 +61,11 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
     }
 
-    override fun navigateToHomeScreen() {
-        //val intent = Intent(this, HomeActivity::class.java)
-        //startActivity(intent)
-        //finish()
+    override fun navigateToHomeScreen(user: User) {
+        val intentLogin = Intent(this@LoginActivity, HomeActivity::class.java )
+        intent.putExtra("userId", user.id)
+        startActivity(intentLogin)
+        finish()
     }
 
     private fun navigateToRegisterScreen() {
