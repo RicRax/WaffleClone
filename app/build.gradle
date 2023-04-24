@@ -34,11 +34,13 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
 }
 
 dependencies {
     implementation 'androidx.room:room-runtime:2.4.0'
+    implementation 'androidx.databinding:databinding-runtime:7.1.2'
     annotationProcessor 'androidx.room:room-compiler:2.4.0'
     kapt "androidx.room:room-compiler:2.4.0"
 
