@@ -5,13 +5,12 @@ import androidx.room.Room
 import com.example.waffle.model.DiaryDao
 import com.example.waffle.model.UserDao
 import com.example.waffle.model.data.AppDatabase
-import com.example.waffle.model.data.OwnershipDao
+import com.example.waffle.model.OwnershipDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import java.security.acl.Owner
 import javax.inject.Singleton
 
 @Module

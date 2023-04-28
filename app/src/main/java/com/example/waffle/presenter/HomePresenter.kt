@@ -10,4 +10,8 @@ class HomePresenter @Inject constructor(private val view: HomeContract.View, pri
     {
       return DbRepository.getDiariesOfUser(userId)
     }
+
+    override fun addDiary(userId: Int) {
+        DbRepository.addDiary(userId)
+    }
 }

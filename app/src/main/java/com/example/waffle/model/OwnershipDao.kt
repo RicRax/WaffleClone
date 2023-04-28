@@ -1,4 +1,4 @@
-package com.example.waffle.model.data
+package com.example.waffle.model
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -9,7 +9,7 @@ import com.example.waffle.model.User
 @Dao
 interface OwnershipDao {
     @Insert
-    fun insertOwnership(user: User, Diary:Diary)
+    fun insertOwnership(userId: Int, diaryId:Int)
 
     @Query(
         "SELECT D.id, D.color, D.name FROM ownerships O, diaries D WHERE O.userId = :userId")//fix query
