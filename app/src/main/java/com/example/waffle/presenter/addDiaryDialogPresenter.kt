@@ -5,6 +5,6 @@ import javax.inject.Inject
 
 
 class addDiaryDialogPresenter @Inject constructor(private val dbRepository: DbRepository) {
-    fun addDiary(Username)
+    fun addDiary(userId : Int, nameDiary : String) = dbRepository.addDiary(userId, nameDiary)
 
 }

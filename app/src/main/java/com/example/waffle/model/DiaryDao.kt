@@ -7,7 +7,7 @@ import com.example.waffle.model.User
 @Dao
 interface DiaryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertDiary(Diary: Diary)
+    fun insertDiary(Diary: Diary) : Long
 
     @Query("SELECT * FROM diaries WHERE id = :id")
     fun getDiary(id : Int): Diary?
