@@ -9,7 +9,7 @@ import com.example.waffle.model.User
 @Dao
 interface OwnershipDao {
     @Insert
-    fun insertOwnership(userId: Int, diaryId:Int)
+    fun insertOwnership(Ownership : DiaryOwnership)
 
     @Query(
         "SELECT D.id, D.color, D.name FROM ownerships O, diaries D WHERE O.userId = :userId")//fix query

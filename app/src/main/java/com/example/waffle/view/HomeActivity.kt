@@ -39,7 +39,7 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
 
             val idBundle = Bundle()
             idBundle.putInt("key",userId)
-            val newFragment =  DialogFragment()
+            val newFragment =  MyDialogFragment()
             newFragment.arguments = idBundle
             newFragment.show(supportFragmentManager, "addDiary")
         }
