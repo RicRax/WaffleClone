@@ -3,6 +3,7 @@ package com.example.waffle.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.waffle.R
 import com.example.waffle.databinding.ActivityHomeBinding
@@ -36,8 +37,11 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
 
         binding.addDiary.setOnClickListener{
 
-            MaterialAlertDialogBuilder(applicationContext).
-            presenter.addDiary
+            val idBundle = Bundle()
+            idBundle.putInt("key",userId)
+            val newFragment =  DialogFragment()
+            newFragment.arguments = idBundle
+            newFragment.show(supportFragmentManager, "addDiary")
         }
 
     }

@@ -19,7 +19,8 @@ class MyDialogFragment : DialogFragment() {
     lateinit var dbRepository: DbRepository
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        private lateinit var binding: DialogNewdiaryBinding
+        //use bundle to get userId
+         lateinit var binding: DialogNewdiaryBinding
 
         presenter = addDiaryDialogPresenter(dbRepository)
 
@@ -28,6 +29,7 @@ class MyDialogFragment : DialogFragment() {
         // Get the layout inflater
         val inflater = requireActivity().layoutInflater
 
+        val userId = arguments?.getInt("key")
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
@@ -41,7 +43,7 @@ class MyDialogFragment : DialogFragment() {
                 })
             .setNegativeButton(R.string.cancel,
                 DialogInterface.OnClickListener { dialog, id ->
-                    getDialog().cancel()
+
                 })
 
         return builder.create()
