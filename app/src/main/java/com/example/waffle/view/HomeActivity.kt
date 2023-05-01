@@ -1,6 +1,9 @@
 package com.example.waffle.view
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
@@ -35,24 +38,49 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
         val userId = intent.getIntExtra("userId", 0)
         setupRecyclerView(userId)
 
-        binding.addDiary.setOnClickListener{
-
-            val idBundle = Bundle()
-            idBundle.putInt("key",userId)
-            val newFragment =  MyDialogFragment()
-            newFragment.arguments = idBundle
-            newFragment.show(supportFragmentManager, "addDiary")
+        binding.addDiary.setOnClickListener {
+            showEditTextDialog()
         }
 
     }
 
-    private fun setupRecyclerView(id : Int){
+    private fun setupRecyclerView(id: Int) {
         binding.booksRecyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = DiaryAdapter(presenter.getDiariesOfUser(id)) //get DiaryList from database using a dao
+            adapter =
+                DiaryAdapter(presenter.getDiariesOfUser(id)) //get DiaryList from database using a dao
+        }
+    }
+
+
+    private fun showEditTextDialog(){
+
+        val builder = AlertDialog.Builder(this)
+
+        val inflater = layoutInflater
+
+        val dialogLayout = inflater.inflate(R.layout.dialog_newdiary, null)
+
+        val nameDiary = dialogLayout.findViewById<EditText>(R.id.nameDiary)
+
+        with(builder) {
+
+            setPositiveButton(
+                R.string.add,
+                DialogInterface.OnClickListener { dialog, id ->
+                    presenter.addDiary(0, nameDiary.text.toString())
+                })
+
+            setNegativeButton(
+                R.string.cancel,
+                DialogInterface.OnClickListener { dialog, id ->
+
+                })
+
+            setView(dialogLayout)
+            show()
         }
     }
 }
-
 
 
