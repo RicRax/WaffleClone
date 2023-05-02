@@ -6,8 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.waffle.R
 import com.example.waffle.databinding.ItemDiaryBinding
 import com.example.waffle.model.Diary
+import com.example.waffle.presenter.RecyclerViewInterface
 
-class DiaryAdapter(var diaryList: List<Diary>) :
+class DiaryAdapter(var diaryList: List<Diary>, val recyclerViewInterface: RecyclerViewInterface) :
     RecyclerView.Adapter<DiaryAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -17,6 +18,10 @@ class DiaryAdapter(var diaryList: List<Diary>) :
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bindItem(diaryList[position])
+
+        holder.itemView.setOnClickListener{
+            recyclerViewInterface.onItemClick(position)
+        }
     }
 
     override fun getItemCount(): Int {

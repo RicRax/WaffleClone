@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
@@ -15,13 +16,14 @@ import com.example.waffle.model.Diary
 import com.example.waffle.model.repository.DbRepository
 import com.example.waffle.presenter.HomeContract
 import com.example.waffle.presenter.HomePresenter
+import com.example.waffle.presenter.RecyclerViewInterface
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class HomeActivity : AppCompatActivity(), HomeContract.View {
+class HomeActivity  : AppCompatActivity(), HomeContract.View, RecyclerViewInterface{
 
     private lateinit var presenter: HomePresenter
 
@@ -40,7 +42,7 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
 
         val userId = intent.getIntExtra("userId", 99)//NOT WORKING
 
-        val diaryAdapter = DiaryAdapter(presenter.getDiariesOfUser(userId))
+        val diaryAdapter = DiaryAdapter(presenter.getDiariesOfUser(userId),this)
 
         binding.booksRecyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -82,6 +84,11 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
             setView(dialogLayout)
             show()
         }
+    }
+
+    override fun onItemClick(Position: Int) {
+        Toast.makeText(applicationContext, "pogClicked", Toast.LENGTH_SHORT).show()
+        //start fragment
     }
 }
 

@@ -9,6 +9,8 @@ interface HomeContract {
         fun getDiariesOfUser(userId: Int) : List<Diary>
 
         fun addDiary(userId : Int, nameDiary : String)
+
+
     }
 
     interface View{
