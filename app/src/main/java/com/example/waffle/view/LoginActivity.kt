@@ -64,22 +64,19 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     override fun navigateToHomeScreen(user: User) {
         val intentLogin = Intent(this@LoginActivity, HomeActivity::class.java )
-        intent.putExtra("userId", user.id)
+        intentLogin.putExtra("userId", user.id)
         startActivity(intentLogin)
         finish()
     }
 
     private fun navigateToRegisterScreen() {
-        Toast.makeText(this,"not working" , Toast.LENGTH_SHORT).show()
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
-        finish()
     }
 
     fun navigateToRegisterScreen(view: View) {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
-        finish()
     }
 
 }

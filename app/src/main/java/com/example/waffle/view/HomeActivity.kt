@@ -27,7 +27,6 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
 
     private lateinit var binding: ActivityHomeBinding
 
-
     @Inject
     lateinit var dbRepository: DbRepository
 
@@ -38,7 +37,8 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
 
         presenter = HomePresenter(this, dbRepository)
 
-        val userId = intent.getIntExtra("userId", 0)
+
+        val userId = intent.getIntExtra("userId", 99)//NOT WORKING
 
         val diaryAdapter = DiaryAdapter(presenter.getDiariesOfUser(userId))
 
@@ -69,7 +69,7 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
             setPositiveButton(
                 R.string.add,
                 DialogInterface.OnClickListener { dialog, id ->
-                    presenter.addDiary(0, nameDiary.text.toString())
+                    presenter.addDiary(userId, nameDiary.text.toString())
                     diaryAdapter.update(presenter.getDiariesOfUser(userId))
                 })
 
