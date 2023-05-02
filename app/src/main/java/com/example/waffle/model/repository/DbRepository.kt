@@ -17,6 +17,5 @@ class DbRepository
         val diaryId = diaryDao.insertDiary(newDiary)
 
         ownershipDao.insertOwnership(DiaryOwnership(userId,diaryId.toInt()))
-        diaryDao.insertDiary(Diary(0,"black",nameDiary))
     }
 }
