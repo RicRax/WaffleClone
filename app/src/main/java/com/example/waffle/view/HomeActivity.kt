@@ -4,11 +4,11 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.LiveData
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.waffle.R
 import com.example.waffle.databinding.ActivityHomeBinding
@@ -17,7 +17,6 @@ import com.example.waffle.model.repository.DbRepository
 import com.example.waffle.presenter.HomeContract
 import com.example.waffle.presenter.HomePresenter
 import com.example.waffle.presenter.RecyclerViewInterface
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -86,10 +85,14 @@ class HomeActivity  : AppCompatActivity(), HomeContract.View, RecyclerViewInterf
         }
     }
 
-    override fun onItemClick(Position: Int) {
-        Toast.makeText(applicationContext, "pogClicked", Toast.LENGTH_SHORT).show()
+    override fun onItemClick(Position: Int, diary: Diary) {
         //start fragment
-    }
-}
+       /* val diaryBundle = bundleOf(diary)
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            add<DiaryViewFragment>(R.id.fragment_container_view_tag)//should be on onCreate?
+        }
+    }*/
+}}
 
 

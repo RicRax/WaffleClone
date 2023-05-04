@@ -20,7 +20,7 @@ class DiaryAdapter(var diaryList: List<Diary>, val recyclerViewInterface: Recycl
         holder.bindItem(diaryList[position])
 
         holder.itemView.setOnClickListener{
-            recyclerViewInterface.onItemClick(position)
+            recyclerViewInterface.onItemClick(position, diaryList[position])
         }
     }
 
