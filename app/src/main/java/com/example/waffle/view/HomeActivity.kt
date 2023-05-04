@@ -87,12 +87,13 @@ class HomeActivity  : AppCompatActivity(), HomeContract.View, RecyclerViewInterf
 
     override fun onItemClick(Position: Int, diary: Diary) {
         //start fragment
-       /* val diaryBundle = bundleOf(diary)
+       val diaryBundle = Bundle()
+       diaryBundle.putParcelable("diaryClicked", diary)
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             add<DiaryViewFragment>(R.id.fragment_container_view_tag)//should be on onCreate?
         }
-    }*/
+
 }}
 
 
