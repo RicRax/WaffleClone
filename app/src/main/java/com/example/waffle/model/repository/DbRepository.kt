@@ -13,7 +13,7 @@ class DbRepository
     fun getUser(email : String, password: String) = userDao.getUser(email,password)
     fun getDiariesOfUser(userId: Int) = ownershipDao.getAllDiariesIdOfUser(userId)
     fun addDiary(userId: Int,nameDiary: String){
-        val newDiary = Diary(0,"black",nameDiary)
+        val newDiary = Diary(0,"black",nameDiary,null)
         val diaryId = diaryDao.insertDiary(newDiary)
 
         ownershipDao.insertOwnership(DiaryOwnership(userId,diaryId.toInt()))

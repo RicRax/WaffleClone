@@ -13,10 +13,13 @@ data class Diary(
 
     val color: String?,
 
-    val name: String?
+    val name: String?,
+
+    var text: String?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
+        parcel.readString(),
         parcel.readString(),
         parcel.readString()
     ) {
@@ -26,6 +29,7 @@ data class Diary(
         parcel.writeInt(id)
         parcel.writeString(color)
         parcel.writeString(name)
+        parcel.writeString(text)
     }
 
     override fun describeContents(): Int {

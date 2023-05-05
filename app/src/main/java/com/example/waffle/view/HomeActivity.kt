@@ -38,7 +38,6 @@ class HomeActivity  : AppCompatActivity(), HomeContract.View, RecyclerViewInterf
 
         presenter = HomePresenter(this, dbRepository)
 
-
         val userId = intent.getIntExtra("userId", 99)//NOT WORKING
 
         val diaryAdapter = DiaryAdapter(presenter.getDiariesOfUser(userId),this)
@@ -63,6 +62,7 @@ class HomeActivity  : AppCompatActivity(), HomeContract.View, RecyclerViewInterf
 
         val dialogLayout = inflater.inflate(R.layout.dialog_newdiary, null)
 
+
         val nameDiary = dialogLayout.findViewById<EditText>(R.id.nameDiary)
 
         with(builder) {
@@ -70,7 +70,7 @@ class HomeActivity  : AppCompatActivity(), HomeContract.View, RecyclerViewInterf
             setPositiveButton(
                 R.string.add,
                 DialogInterface.OnClickListener { dialog, id ->
-                    presenter.addDiary(userId, nameDiary.text.toString())
+                    presenter.addDiary(userId, nameDiary.text.toString(),)
                     diaryAdapter.update(presenter.getDiariesOfUser(userId))
                 })
 
@@ -88,10 +88,13 @@ class HomeActivity  : AppCompatActivity(), HomeContract.View, RecyclerViewInterf
     override fun onItemClick(Position: Int, diary: Diary) {
         //start fragment
        val diaryBundle = Bundle()
-       diaryBundle.putParcelable("diaryClicked", diary)
+
+       diaryBundle.putString("textDiary", diary.text)
+       diaryBundle.putString("nameDiary", diary.name)
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            add<DiaryViewFragment>(R.id.fragment_container_view_tag)//should be on onCreate?
+            add<DiaryViewFragment>(R.id.fragment_container_view_tag,args = diaryBundle)//should be on onCreate?
+            addToBackStack("diaryView")
         }
 
 }}
