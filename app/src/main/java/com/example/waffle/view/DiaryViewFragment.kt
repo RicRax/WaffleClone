@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.waffle.R
 import com.example.waffle.databinding.FragmentViewdiaryBinding
 import com.example.waffle.model.Diary
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class DiaryViewFragment : Fragment(R.layout.fragment_viewdiary) {
 
@@ -35,6 +36,7 @@ class DiaryViewFragment : Fragment(R.layout.fragment_viewdiary) {
         val diaryText = requireArguments().getString("textDiary")
 
         binding.diaryText.setText(diaryText)
+        requireActivity().findViewById<FloatingActionButton>(R.id.addDiary).hide()
         binding.nameDiary.text = diaryName
         //add dataBinding
     }
