@@ -12,7 +12,7 @@ interface OwnershipDao {
     fun insertOwnership(Ownership : DiaryOwnership)
 
     @Query(
-        "SELECT DISTINCT D.id, D.color, D.name FROM ownerships O, diaries D WHERE O.userId = :userId AND O.diaryId = D.id")//fix query
+        "SELECT DISTINCT D.id, D.color, D.name,D.text FROM ownerships O, diaries D WHERE O.userId = :userId AND O.diaryId = D.id")//fix query
 
 
     //join to diary table to return diaries

@@ -26,11 +26,7 @@
             android:contentDescription="@string/register_text"
             android:src="@drawable/logo" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/fragment_container_view_tag"
-            />
+
     </RelativeLayout>
 
 
