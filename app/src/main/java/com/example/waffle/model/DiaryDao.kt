@@ -1,8 +1,6 @@
 package com.example.waffle.model
 
 import androidx.room.*
-import com.example.waffle.model.Diary
-import com.example.waffle.model.User
 
 @Dao
 interface DiaryDao {
@@ -11,6 +9,9 @@ interface DiaryDao {
 
     @Query("SELECT * FROM diaries WHERE id = :id")
     fun getDiary(id : Int): Diary?
+
+    @Query("UPDATE diaries SET text = :newText WHERE id = :diaryId")
+    fun updateDiaryText(newText: String?, diaryId: Int)
 
 }
 

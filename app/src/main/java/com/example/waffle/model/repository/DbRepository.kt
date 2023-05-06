@@ -9,6 +9,7 @@ class DbRepository
     private val  diaryDao: DiaryDao,
     private val  ownershipDao: OwnershipDao,
 ) {
+
     fun saveUser(username: String, email : String, password: String ) = userDao.insertUser(User(0,username, email, password))
     fun getUser(email : String, password: String) = userDao.getUser(email,password)
     fun getDiariesOfUser(userId: Int) = ownershipDao.getAllDiariesIdOfUser(userId)
@@ -17,5 +18,9 @@ class DbRepository
         val diaryId = diaryDao.insertDiary(newDiary)
 
         ownershipDao.insertOwnership(DiaryOwnership(userId,diaryId.toInt()))
+    }
+
+    fun updateDiaryText(newText: String?, diaryId: Int) {
+        diaryDao.updateDiaryText(newText,diaryId)
     }
 }

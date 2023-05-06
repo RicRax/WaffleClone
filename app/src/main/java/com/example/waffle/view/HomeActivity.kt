@@ -22,7 +22,7 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class HomeActivity  : AppCompatActivity(), HomeContract.View, RecyclerViewInterface{
+class HomeActivity : AppCompatActivity(), HomeContract.View, RecyclerViewInterface {
 
     private lateinit var presenter: HomePresenter
 
@@ -40,7 +40,7 @@ class HomeActivity  : AppCompatActivity(), HomeContract.View, RecyclerViewInterf
 
         val userId = intent.getIntExtra("userId", 99)//NOT WORKING
 
-        val diaryAdapter = DiaryAdapter(presenter.getDiariesOfUser(userId),this)
+        val diaryAdapter = DiaryAdapter(presenter.getDiariesOfUser(userId), this)
 
         binding.booksRecyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -48,13 +48,13 @@ class HomeActivity  : AppCompatActivity(), HomeContract.View, RecyclerViewInterf
         }
 
         binding.addDiary.setOnClickListener {
-            showEditTextDialog(diaryAdapter,userId)
+            showEditTextDialog(diaryAdapter, userId)
         }
 
     }
 
 
-    private fun showEditTextDialog(diaryAdapter : DiaryAdapter, userId: Int) {
+    private fun showEditTextDialog(diaryAdapter: DiaryAdapter, userId: Int) {
 
         val builder = AlertDialog.Builder(this)
 
@@ -70,7 +70,7 @@ class HomeActivity  : AppCompatActivity(), HomeContract.View, RecyclerViewInterf
             setPositiveButton(
                 R.string.add,
                 DialogInterface.OnClickListener { dialog, id ->
-                    presenter.addDiary(userId, nameDiary.text.toString(),)
+                    presenter.addDiary(userId, nameDiary.text.toString())
                     diaryAdapter.update(presenter.getDiariesOfUser(userId))
                 })
 
@@ -87,16 +87,21 @@ class HomeActivity  : AppCompatActivity(), HomeContract.View, RecyclerViewInterf
 
     override fun onItemClick(Position: Int, diary: Diary) {
         //start fragment
-       val diaryBundle = Bundle()
+        val diaryBundle = Bundle()
 
-       diaryBundle.putString("textDiary", diary.text)
-       diaryBundle.putString("nameDiary", diary.name)
+        diaryBundle.putString("textDiary", diary.text)
+        diaryBundle.putString("nameDiary", diary.name)
+        diaryBundle.putInt("diaryId", diary.id)
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            add<DiaryViewFragment>(R.id.fragment_container_view_tag,args = diaryBundle)//should be on onCreate?
+            add<DiaryViewFragment>(
+                R.id.fragment_container_view_tag,
+                args = diaryBundle
+            )//should be on onCreate?
             addToBackStack("diaryView")
         }
 
-}}
+    }
+}
 
 
